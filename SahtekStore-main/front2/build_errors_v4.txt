@@ -1,0 +1,69 @@
+﻿Initial chunk files   | Names                     |  Raw size | Estimated transfer size
+styles-ZUWIC5FC.css   | styles                    | 313.31 kB |                32.70 kB
+chunk-6CFKVVEZ.js     | -                         | 256.06 kB |                68.93 kB
+main-SI3F5WDW.js      | main                      | 102.87 kB |                19.72 kB
+scripts-SQ7W6IC7.js   | scripts                   |  78.53 kB |                21.12 kB
+chunk-KVA4STST.js     | -                         |  43.64 kB |                 8.69 kB
+polyfills-FFHMD2TL.js | polyfills                 |  33.71 kB |                11.02 kB
+chunk-PWKOEUWV.js     | -                         |   3.92 kB |                 1.18 kB
+chunk-FMXTJZCP.js     | -                         |   3.33 kB |                 1.09 kB
+
+                      | Initial total             | 835.37 kB |               164.44 kB
+
+Lazy chunk files      | Names                     |  Raw size | Estimated transfer size
+chunk-QZRJ5SEF.js     | checkout-component        |  12.94 kB |                 3.61 kB
+chunk-EVW3B6M2.js     | product-detail-component  |  12.69 kB |                 3.78 kB
+chunk-V66VYCFY.js     | cart-component            |  10.93 kB |                 3.37 kB
+chunk-FQHMBKJ7.js     | category-detail-component |   8.75 kB |                 2.86 kB
+chunk-TC2TXSLW.js     | category-list-component   |   3.49 kB |                 1.32 kB
+
+Output location: C:\Users\USER\Desktop\sahtek express\front2\dist\sahtek-express
+
+Application bundle generation complete. [4.257 seconds]
+
+node.exe : Ôû▓ 
+[WARNING] bundle 
+initial exceeded 
+maximum budget. 
+Budget 500.00 kB was 
+not met by 335.37 kB 
+with a total of 
+835.37 kB.
+Au caractère 
+C:\Program Files\nodej
+s\npx.ps1:29 : 3
++   & $NODE_EXE 
+$NPX_CLI_JS $args
++   ~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~
+    + CategoryInfo    
+          : NotSpeci  
+  fied: (Ôû▓ [WARNI   
+ NG] b...l of 835.    
+37 kB.:String) []    
+, RemoteException
+    + FullyQualifiedE 
+   rrorId : NativeCo  
+  mmandError
+ 
+
+
+Ôû▓ [WARNING] src/app/
+features/home/home.com
+ponent.css exceeded 
+maximum budget. 
+Budget 10.00 kB was 
+not met by 8.03 kB 
+with a total of 18.03 
+kB.
+
+
+Ôû▓ [WARNING] 1 rules 
+skipped due to 
+selector errors:
+  
+.form-floating>~label 
+-> Did not expect 
+successive traversals.
+
+

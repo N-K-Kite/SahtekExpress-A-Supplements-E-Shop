@@ -1,0 +1,352 @@
+<div class="home-wrapper">
+    <!-- Animated Particles Background -->
+    <div class="particles-bg"></div>
+
+    <!-- Hero Section: Next-Gen Performance -->
+    <section class="hero-nextgen">
+        <div class="hero-gradient-orbs">
+            <div class="orb orb-1"></div>
+            <div class="orb orb-2"></div>
+            <div class="orb orb-3"></div>
+        </div>
+
+        <div class="container h-100 position-relative">
+            <div class="row h-100 align-items-center">
+                <div class="col-lg-6">
+                    <div class="hero-content-ultra" data-aos="fade-right">
+                        <div class="hero-badge-animated">
+                            <span class="badge-pulse"></span>
+                            <span class="badge-text">🔥 PERFORMANCE ÉDITION 2026</span>
+                        </div>
+
+                        <h1 class="hero-title-explosive">
+                            DOMINEZ<br>
+                            <span class="title-gradient-shift">VOTRE ARÈNE</span>
+                        </h1>
+
+                        <p class="hero-subtitle-sleek">
+                            Des suppléments de <strong>qualité pharmaceutique</strong> pour les athlètes
+                            qui repoussent leurs limites chaque jour.
+                        </p>
+
+                        <div class="hero-cta-group">
+                            <a routerLink="/categories" class="btn-hero-primary">
+                                <span class="btn-content">
+                                    <i class="bi bi-lightning-charge-fill"></i>
+                                    DÉCOUVRIR LA GAMME
+                                </span>
+                                <span class="btn-shine"></span>
+                            </a>
+
+                            <div class="trust-metrics">
+                                <div class="metric-item">
+                                    <div class="stars-row">
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                    </div>
+                                    <span class="metric-text">4.9/5 • 2,400+ avis</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="hero-stats-bar">
+                            <div class="stat-box">
+                                <div class="stat-number">15K+</div>
+                                <div class="stat-label">Athlètes</div>
+                            </div>
+                            <div class="stat-divider"></div>
+                            <div class="stat-box">
+                                <div class="stat-number">98%</div>
+                                <div class="stat-label">Satisfaction</div>
+                            </div>
+                            <div class="stat-divider"></div>
+                            <div class="stat-box">
+                                <div class="stat-number">24H</div>
+                                <div class="stat-label">Livraison</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 d-none d-lg-flex">
+                    <div class="hero-visual-sphere">
+                        <div class="sphere-container">
+                            <div class="floating-card card-1">
+                                <i class="bi bi-award-fill"></i>
+                                <span>Certifié Premium</span>
+                            </div>
+                            <div class="floating-card card-2">
+                                <i class="bi bi-lightning-fill"></i>
+                                <span>Boost Extrême</span>
+                            </div>
+                            <div class="floating-card card-3">
+                                <i class="bi bi-shield-check"></i>
+                                <span>100% Naturel</span>
+                            </div>
+
+                            <div class="central-product-mockup">
+                                <img src="https://images.unsplash.com/photo-1593079831268-3381b0db4a77?q=80&w=800&auto=format&fit=crop"
+                                    alt="Elite Supplement" class="product-hero-img">
+                                <div class="glow-ring"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="scroll-indicator">
+            <div class="mouse-icon">
+                <div class="mouse-wheel"></div>
+            </div>
+            <span>Scroll pour explorer</span>
+        </div>
+    </section>
+
+    <!-- Premium Features Strip -->
+    <section class="features-strip">
+        <div class="container-fluid">
+            <div class="features-slider">
+                <div class="feature-pill" *ngFor="let i of [1,2,3,4,1,2,3,4]">
+                    <i class="bi bi-shield-fill-check"></i>
+                    <span>QUALITÉ CERTIFIÉE</span>
+                    <i class="bi bi-truck-front-fill"></i>
+                    <span>LIVRAISON EXPRESS</span>
+                    <i class="bi bi-lightning-charge-fill"></i>
+                    <span>RÉSULTATS RAPIDES</span>
+                    <i class="bi bi-lock-fill"></i>
+                    <span>PAIEMENT 100% SÉCURISÉ</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories: Shop By Goal -->
+    <section class="categories-modern py-5">
+        <div class="container py-5">
+            <div class="section-header-modern text-center mb-5" data-aos="fade-up">
+                <span class="section-label">VOS OBJECTIFS</span>
+                <h2 class="section-title-massive">
+                    Choisissez Votre <span class="text-highlight">Transformation</span>
+                </h2>
+                <p class="section-description">
+                    Des suppléments ciblés pour chaque étape de votre parcours fitness
+                </p>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6" *ngFor="let cat of categories; let i = index" data-aos="fade-up"
+                    [attr.data-aos-delay]="i * 100">
+                    <a [routerLink]="['/categories', cat.slug]" class="category-card-modern">
+                        <div class="category-gradient-bg"></div>
+                        <div class="category-content">
+                            <div class="category-icon-wrapper">
+                                <div class="icon-glow"></div>
+                                <i class="bi category-icon" [ngClass]="cat.icon"></i>
+                            </div>
+                            <h3 class="category-title">{{ cat.displayName }}</h3>
+                            <p class="category-desc">{{ cat.description }}</p>
+                            <div class="category-cta">
+                                <span>Explorer</span>
+                                <i class="bi bi-arrow-right-short"></i>
+                            </div>
+                        </div>
+                        <div class="hover-shimmer"></div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products: Latest Elite -->
+    <section class="products-showcase py-5">
+        <div class="container py-5">
+            <div class="d-flex justify-content-between align-items-center mb-5 flex-wrap">
+                <div class="section-header-modern" data-aos="fade-right">
+                    <span class="section-label">NOUVEAUTÉS</span>
+                    <h2 class="section-title-massive">
+                        Les Derniers <span class="text-highlight">Arrivages</span>
+                    </h2>
+                </div>
+                <a routerLink="/categories" class="btn-link-modern" data-aos="fade-left">
+                    Voir tout le catalogue
+                    <i class="bi bi-arrow-right"></i>
+                </a>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-4 col-sm-6" *ngFor="let product of products; let i = index"
+                    data-aos="zoom-in" [attr.data-aos-delay]="i * 80">
+                    <a [routerLink]="['/products', product.id]" class="product-card-elite">
+                        <div class="product-image-zone">
+                            <div class="image-overlay-gradient"></div>
+                            <img *ngIf="product.imageUrl" [src]="getImageUrl(product.imageUrl)" [alt]="product.name"
+                                class="product-img-main">
+                            <div *ngIf="!product.imageUrl" class="product-img-placeholder">
+                                <i class="bi bi-box-seam"></i>
+                            </div>
+
+                            <div class="product-badges">
+                                <span class="badge-new">NEW</span>
+                                <span class="badge-stock-status"
+                                    [class.in-stock]="(product.stockQuantity ?? product.stock ?? 0) > 0"
+                                    [class.out-stock]="(product.stockQuantity ?? product.stock ?? 0) <= 0">
+                                    {{ (product.stockQuantity ?? product.stock ?? 0) > 0 ? 'EN STOCK' : 'RUPTURE' }}
+                                </span>
+                            </div>
+
+                            <button class="btn-quick-view" (click)="$event.preventDefault(); $event.stopPropagation();">
+                                <i class="bi bi-eye-fill"></i>
+                            </button>
+                        </div>
+
+                        <div class="product-info-zone">
+                            <span class="product-category">{{ product.category?.displayName || 'Elite' }}</span>
+                            <h4 class="product-name">{{ product.name }}</h4>
+
+                            <div class="product-footer-bar">
+                                <div class="price-block">
+                                    <span class="price-amount">{{ product.price }}</span>
+                                    <span class="price-currency">TND</span>
+                                </div>
+                                <button class="btn-add-cart"
+                                    [class.btn-disabled]="(product.stockQuantity ?? product.stock ?? 0) <= 0"
+                                    [disabled]="(product.stockQuantity ?? product.stock ?? 0) <= 0"
+                                    (click)="$event.preventDefault(); $event.stopPropagation(); addToCart(product)"
+                                    [title]="(product.stockQuantity ?? product.stock ?? 0) <= 0 ? 'Rupture de stock' : 'Ajouter au panier'">
+                                    <i class="bi"
+                                        [ngClass]="(product.stockQuantity ?? product.stock ?? 0) <= 0 ? 'bi-x-circle' : 'bi-cart-plus-fill'"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="card-shine-effect"></div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="why-section py-5">
+        <div class="container py-5">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-5 mb-lg-0" data-aos="fade-right">
+                    <span class="section-label mb-3 d-inline-block">NOTRE DIFFÉRENCE</span>
+                    <h2 class="section-title-massive mb-4">
+                        La Science Rencontre<br>
+                        <span class="text-highlight">La Performance</span>
+                    </h2>
+                    <p class="lead-text mb-4">
+                        Nous ne vendons pas que des suppléments. Nous créons des solutions
+                        scientifiquement prouvées pour transformer votre physique et vos performances.
+                    </p>
+
+                    <div class="benefits-grid">
+                        <div class="benefit-item" data-aos="fade-up" data-aos-delay="100">
+                            <div class="benefit-icon">
+                                <i class="bi bi-flask"></i>
+                            </div>
+                            <div class="benefit-content">
+                                <h5>Testés en Laboratoire</h5>
+                                <p>Chaque ingrédient est analysé pour garantir pureté et efficacité</p>
+                            </div>
+                        </div>
+
+                        <div class="benefit-item" data-aos="fade-up" data-aos-delay="200">
+                            <div class="benefit-icon">
+                                <i class="bi bi-transparency"></i>
+                            </div>
+                            <div class="benefit-content">
+                                <h5>100% Transparent</h5>
+                                <p>Formules complètes sans proprietary blends cachés</p>
+                            </div>
+                        </div>
+
+                        <div class="benefit-item" data-aos="fade-up" data-aos-delay="300">
+                            <div class="benefit-icon">
+                                <i class="bi bi-trophy-fill"></i>
+                            </div>
+                            <div class="benefit-content">
+                                <h5>Approuvé par les Pros</h5>
+                                <p>Utilisé par des athlètes de haut niveau et des champions</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="why-visuals-grid">
+                        <div class="visual-card vc-1">
+                            <div class="card-overlay"></div>
+                        </div>
+                        <div class="visual-card vc-2">
+                            <div class="card-overlay"></div>
+                        </div>
+                        <div class="visual-card vc-3">
+                            <div class="stat-overlay">
+                                <div class="stat-big">98%</div>
+                                <div class="stat-text">Taux de satisfaction</div>
+                            </div>
+                        </div>
+                        <div class="visual-card vc-4">
+                            <div class="card-overlay"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter CTA -->
+    <section class="newsletter-section py-5">
+        <div class="container py-5">
+            <div class="newsletter-box" data-aos="zoom-in">
+                <div class="newsletter-glow-bg"></div>
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-lg-8 text-center position-relative">
+                        <div class="newsletter-icon-float">
+                            <i class="bi bi-envelope-heart-fill"></i>
+                        </div>
+
+                        <h2 class="newsletter-title">
+                            Rejoignez l'<span class="text-highlight">Élite</span>
+                        </h2>
+                        <p class="newsletter-subtitle">
+                            Recevez des conseils exclusifs, des offres VIP et un accès anticipé
+                            aux nouveaux produits
+                        </p>
+
+                        <form class="newsletter-form-modern">
+                            <div class="form-input-group">
+                                <i class="bi bi-envelope-fill input-icon"></i>
+                                <input type="email" placeholder="Votre meilleure adresse email"
+                                    class="form-control-modern">
+                                <button type="submit" class="btn-submit-modern">
+                                    <span>S'abonner</span>
+                                    <i class="bi bi-arrow-right-short"></i>
+                                </button>
+                            </div>
+                        </form>
+
+                        <div class="newsletter-trust-badges">
+                            <span class="trust-badge">
+                                <i class="bi bi-shield-check"></i> 100% Sécurisé
+                            </span>
+                            <span class="trust-badge">
+                                <i class="bi bi-envelope-x"></i> Zéro spam
+                            </span>
+                            <span class="trust-badge">
+                                <i class="bi bi-gift"></i> Offre de bienvenue
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

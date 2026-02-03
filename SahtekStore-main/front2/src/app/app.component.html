@@ -1,0 +1,8 @@
+<div class="app-container d-flex flex-column min-vh-100">
+  <app-notifications></app-notifications>
+  <app-navbar *ngIf="showLayout"></app-navbar>
+  <main class="flex-grow-1 d-flex flex-column">
+    <router-outlet></router-outlet>
+  </main>
+  <app-footer *ngIf="showLayout"></app-footer>
+</div>

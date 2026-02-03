@@ -1,0 +1,86 @@
+<div class="admin-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <div class="brand-logo">
+                <i class="bi bi-lightning-charge-fill"></i>
+                <span>Sahtek <small>Nutrition</small></span>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <div class="nav-section">Main Menu</div>
+            <a routerLink="/admin/products" routerLinkActive="active" class="nav-link">
+                <i class="bi bi-grid-1x2-fill"></i>
+                <span>Inventory</span>
+                <span class="active-indicator"></span>
+            </a>
+            <a routerLink="/admin/orders" routerLinkActive="active" class="nav-link">
+                <i class="bi bi-cart-check-fill"></i>
+                <span>Commandes</span>
+                <span class="active-indicator"></span>
+            </a>
+            <a routerLink="/admin/delivery" routerLinkActive="active" class="nav-link">
+                <i class="bi bi-truck"></i>
+                <span>Livraisons</span>
+                <span class="active-indicator"></span>
+            </a>
+
+            <div class="nav-section">Reports</div>
+            <a routerLink="/admin/analytics" routerLinkActive="active" class="nav-link">
+                <i class="bi bi-bar-chart-fill"></i>
+                <span>Analytics</span>
+                <span class="active-indicator"></span>
+            </a>
+            <a routerLink="/admin/customers" routerLinkActive="active" class="nav-link">
+                <i class="bi bi-people-fill"></i>
+                <span>Customers</span>
+                <span class="active-indicator"></span>
+            </a>
+
+            <div class="nav-spacer"></div>
+
+            <a routerLink="/" class="nav-link back-home">
+                <i class="bi bi-arrow-left-circle"></i>
+                <span>Site Home</span>
+            </a>
+            <button (click)="logout()" class="nav-link logout-btn">
+                <i class="bi bi-box-arrow-right"></i>
+                <span>Logout</span>
+            </button>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-wrapper">
+        <!-- Topbar -->
+        <header class="topbar-glass">
+            <div class="topbar-left">
+                <h4 class="page-context">Dashboard</h4>
+                <span class="date-text text-muted">{{ currentDate | date:'fullDate' }}</span>
+            </div>
+
+            <div class="topbar-right">
+                <div class="search-box">
+                    <i class="bi bi-search"></i>
+                    <input type="text" placeholder="Search orders, products...">
+                </div>
+
+                <div class="user-profile-mini">
+                    <div class="profile-info text-end d-none d-md-block">
+                        <span class="profile-name">{{ currentUser?.firstName || 'Admin' }}</span>
+                        <span class="profile-role">Elite Administrator</span>
+                    </div>
+                    <div class="profile-avatar">
+                        <i class="bi bi-person-circle"></i>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Route Content -->
+        <section class="content-body">
+            <router-outlet></router-outlet>
+        </section>
+    </main>
+</div>

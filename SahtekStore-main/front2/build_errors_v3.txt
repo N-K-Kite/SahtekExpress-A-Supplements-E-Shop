@@ -1,0 +1,37 @@
+﻿Application bundle generation failed. [3.246 seconds]
+
+node.exe : X [ERROR] 
+TS-992008: Could not 
+find stylesheet file '
+./app.component.css'. 
+[plugin 
+angular-compiler]
+Au caractère 
+C:\Program Files\nodej
+s\npx.ps1:29 : 3
++   & $NODE_EXE 
+$NPX_CLI_JS $args
++   ~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~
+    + CategoryInfo    
+          : NotSpeci  
+  fied: (X [ERROR]    
+ TS-99...gular-com    
+piler]:String) []    
+, RemoteException
+    + FullyQualifiedE 
+   rrorId : NativeCo  
+  mmandError
+ 
+
+    src/app/features/c
+art/cart.component.ts:
+14:14:
+      14 Ôöé     
+styleUrl: 
+'./app.component.css'
+         ÔòÁ          
+     
+~~~~~~~~~~~~~~~~~~~~~
+
+

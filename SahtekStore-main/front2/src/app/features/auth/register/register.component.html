@@ -1,0 +1,124 @@
+<div class="login-wrapper">
+    <div class="login-split">
+        <!-- Left Side: Branding & Info -->
+        <div class="login-info-side register-info">
+            <div class="hero-overlay"></div>
+            <div class="hero-particles">
+                <span class="particle"></span>
+                <span class="particle"></span>
+                <span class="particle"></span>
+                <span class="particle"></span>
+            </div>
+
+            <div class="info-content">
+                <a routerLink="/" class="brand-badge mb-4 text-decoration-none text-white">
+                    <i class="bi bi-lightning-charge-fill me-2"></i> Sahtek Nutrition
+                </a>
+                <h1 class="display-4 fw-bold mb-4">JOIN THE ELITE SQUAD</h1>
+                <p class="lead mb-5">Start your journey to greatness. Create an account to access our full performance
+                    range.</p>
+
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <div class="feature-icon-mini">
+                            <i class="bi bi-trophy-fill"></i>
+                        </div>
+                        <div class="feature-text-mini">
+                            <h6>Expert Guidance</h6>
+                            <p>Pro tips for your goals</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon-mini">
+                            <i class="bi bi-star-fill"></i>
+                        </div>
+                        <div class="feature-text-mini">
+                            <h6>Loyalty Rewards</h6>
+                            <p>Earn points on every fuel</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Side: Register Form -->
+        <div class="login-form-side">
+            <div class="form-container-glass">
+                <div class="form-header text-center mb-5">
+                    <h2 class="fw-bold">Create Account</h2>
+                    <p class="text-muted">Start your transformation today</p>
+                </div>
+
+                <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="modern-form">
+                    <div class="row g-3">
+                        <div class="col-md-6 mb-3">
+                            <div class="form-floating">
+                                <input type="text" id="firstName" formControlName="firstName" class="form-control"
+                                    placeholder="First Name">
+                                <label for="firstName">First Name</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="form-floating">
+                                <input type="text" id="lastName" formControlName="lastName" class="form-control"
+                                    placeholder="Last Name">
+                                <label for="lastName">Last Name</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <input type="email" id="email" formControlName="email" class="form-control"
+                            placeholder="name@example.com">
+                        <label for="email"><i class="bi bi-envelope me-2"></i>Email address</label>
+                        <div *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched"
+                            class="error-text">
+                            Valid email is required.
+                        </div>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <input type="password" id="password" formControlName="password" class="form-control"
+                            placeholder="Password">
+                        <label for="password"><i class="bi bi-lock me-2"></i>Password</label>
+                        <div *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched"
+                            class="error-text">
+                            Min. 6 characters required.
+                        </div>
+                    </div>
+
+                    <div class="form-floating mb-4">
+                        <input type="text" id="secretPin" formControlName="secretPin" class="form-control"
+                            placeholder="Code PIN (Secret)" maxlength="6">
+                        <label for="secretPin"><i class="bi bi-shield-lock me-2"></i>Code PIN Secret (4-6
+                            chiffres)</label>
+                        <div *ngIf="registerForm.get('secretPin')?.invalid && registerForm.get('secretPin')?.touched"
+                            class="error-text">
+                            PIN de 4 à 6 chiffres requis. Utilisé pour récupérer le compte.
+                        </div>
+                    </div>
+
+                    <div *ngIf="errorMessage" class="alert alert-danger modern-alert mb-4">
+                        {{ errorMessage }}
+                    </div>
+
+                    <button type="submit" [disabled]="registerForm.invalid"
+                        class="btn btn-login-submit w-100 py-3 mb-4">
+                        <span>Sign Up</span>
+                        <i class="bi bi-person-plus-fill ms-2"></i>
+                    </button>
+
+                    <div class="form-footer text-center">
+                        <p class="mb-0">Already an athlete?
+                            <a routerLink="/login" class="register-link">Log In</a>
+                        </p>
+                    </div>
+                </form>
+            </div>
+
+            <div class="copyright text-muted text-center py-4">
+                &copy; 2026 Sahtek Performance. Elite Nutrition.
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,87 @@
+<div class="search-page-wrapper">
+    <!-- Header Section -->
+    <section class="search-header py-5">
+        <div class="container py-4">
+            <div class="header-content text-center" data-aos="fade-up">
+                <span class="section-label">RÉSULTATS DE RECHERCHE</span>
+                <h1 class="section-title-massive">
+                    Recherche pour "<span class="text-highlight">{{ query }}</span>"
+                </h1>
+                <p class="section-description" *ngIf="!loading">
+                    {{ products.length }} produit(s) trouvé(s)
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <section class="results-grid py-5">
+        <div class="container">
+            <!-- Loading Spinner -->
+            <div *ngIf="loading" class="text-center py-5">
+                <div class="spinner-border text-primary" role="status">
+                    <span class="visually-hidden">Chargement...</span>
+                </div>
+                <p class="mt-3 text-muted">Recherche des meilleurs produits pour vous...</p>
+            </div>
+
+            <!-- Products Grid -->
+            <div *ngIf="!loading && products.length > 0" class="row g-4">
+                <div class="col-lg-3 col-md-4 col-sm-6" *ngFor="let product of products; let i = index" data-aos="zoom-in"
+                    [attr.data-aos-delay]="i * 50">
+                    <a [routerLink]="['/products', product.id]" class="product-card-elite">
+                        <div class="product-image-zone">
+                            <div class="image-overlay-gradient"></div>
+                            <img *ngIf="product.imageUrl" [src]="getImageUrl(product.imageUrl)" [alt]="product.name"
+                                class="product-img-main">
+                            <div *ngIf="!product.imageUrl" class="product-img-placeholder">
+                                <i class="bi bi-box-seam"></i>
+                            </div>
+
+                            <div class="product-badges">
+                                <span class="badge-stock-status"
+                                    [class.in-stock]="(product.stockQuantity ?? product.stock ?? 0) > 0"
+                                    [class.out-stock]="(product.stockQuantity ?? product.stock ?? 0) <= 0">
+                                    {{ (product.stockQuantity ?? product.stock ?? 0) > 0 ? 'EN STOCK' : 'RUPTURE' }}
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="product-info-zone">
+                            <span class="product-category">{{ product.category?.displayName || 'Elite' }}</span>
+                            <h4 class="product-name">{{ product.name }}</h4>
+
+                            <div class="product-footer-bar">
+                                <div class="price-block">
+                                    <span class="price-amount">{{ product.price }}</span>
+                                    <span class="price-currency">TND</span>
+                                </div>
+                                <button class="btn-add-cart"
+                                    [class.btn-disabled]="(product.stockQuantity ?? product.stock ?? 0) <= 0"
+                                    [disabled]="(product.stockQuantity ?? product.stock ?? 0) <= 0"
+                                    (click)="$event.preventDefault(); $event.stopPropagation(); addToCart(product)"
+                                    [title]="(product.stockQuantity ?? product.stock ?? 0) <= 0 ? 'Rupture de stock' : 'Ajouter au panier'">
+                                    <i class="bi"
+                                        [ngClass]="(product.stockQuantity ?? product.stock ?? 0) <= 0 ? 'bi-x-circle' : 'bi-cart-plus-fill'"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-shine-effect"></div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- No Results -->
+            <div *ngIf="!loading && products.length === 0" class="no-results text-center py-5">
+                <div class="no-results-icon mb-4">
+                    <i class="bi bi-search-heart"></i>
+                </div>
+                <h3>Aucun produit trouvé</h3>
+                <p class="text-muted">Désolé, nous n'avons trouvé aucun produit correspondant à "{{ query }}".</p>
+                <a routerLink="/" class="btn-hero-primary mt-4">
+                    <span class="btn-content">RETOUR À L'ACCUEIL</span>
+                </a>
+            </div>
+        </div>
+    </section>
+</div>

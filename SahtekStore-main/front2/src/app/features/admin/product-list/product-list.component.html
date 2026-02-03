@@ -1,0 +1,119 @@
+<div class="product-page-inner">
+    <!-- Header Area -->
+    <div class="header-glass mb-4">
+        <div class="header-content">
+            <div class="header-left">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a routerLink="/admin">Admin</a></li>
+                        <li class="breadcrumb-item active">Inventory</li>
+                    </ol>
+                </nav>
+                <h2 class="fw-bold mb-0">Performance Inventory</h2>
+                <p class="text-muted small mb-0">Manage your elite supplements and sports nutrition products.</p>
+            </div>
+            <div class="header-right">
+                <a routerLink="/admin/products/add" class="btn btn-add-premium">
+                    <i class="bi bi-plus-lg"></i>
+                    <span>Register New Product</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Inventory Stats (Optional but Pro) -->
+    <div class="row g-4 mb-4">
+        <div class="col-md-3">
+            <div class="stat-card">
+                <div class="stat-icon bg-soft-blue text-primary">
+                    <i class="bi bi-box-seam"></i>
+                </div>
+                <div class="stat-info">
+                    <span class="stat-label">Total SKUs</span>
+                    <h3 class="stat-value">{{ products.length }}</h3>
+                </div>
+            </div>
+        </div>
+        <!-- Add more stats if needed -->
+    </div>
+
+    <!-- Table Section -->
+    <div class="table-container-glass">
+        <div class="table-responsive">
+            <table class="table modern-table">
+                <thead>
+                    <tr>
+                        <th class="ps-4">Product Info</th>
+                        <th>Category</th>
+                        <th>Pricing</th>
+                        <th>Stock Status</th>
+                        <th class="text-end pe-4">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let product of products" class="align-middle">
+                        <td class="ps-4">
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="product-image-mini">
+                                    <img *ngIf="product.imageUrl" [src]="getSafeUrl(product.imageUrl)"
+                                        [alt]="product.name">
+                                    <div *ngIf="!product.imageUrl" class="no-image-placeholder">
+                                        <i class="bi bi-image"></i>
+                                    </div>
+                                </div>
+                                <div class="product-meta">
+                                    <span class="product-name fw-bold">{{ product.name }}</span>
+                                    <span class="product-id text-muted">ID: #{{ product.id }}</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <span class="badge badge-category">
+                                {{ product.category?.name || product.category }}
+                            </span>
+                        </td>
+                        <td>
+                            <span class="price-value">{{ product.price | number:'1.2-2' }}</span>
+                            <small class="currency text-muted ms-1">TND</small>
+                        </td>
+                        <td>
+                            <div *ngIf="(product.stockQuantity ?? 0) > 50" class="status-indicator stock-high">
+                                <span class="dot"></span> In Stock ({{ product.stockQuantity }})
+                            </div>
+                            <div *ngIf="(product.stockQuantity ?? 0) <= 50 && (product.stockQuantity ?? 0) > 0"
+                                class="status-indicator stock-low">
+                                <span class="dot"></span> Low Stock ({{ product.stockQuantity }})
+                            </div>
+                            <div *ngIf="(product.stockQuantity ?? 0) === 0" class="status-indicator stock-out">
+                                <span class="dot"></span> Out of Stock
+                            </div>
+                        </td>
+                        <td class="text-end pe-4">
+                            <div class="action-btn-group">
+                                <button [routerLink]="['/admin/products/edit', product.id ?? 0]"
+                                    class="btn-action-outline edit" title="Edit">
+                                    <i class="bi bi-pencil-square"></i>
+                                </button>
+                                <button (click)="onDelete(product.id ?? 0)" class="btn-action-outline delete"
+                                    title="Delete">
+                                    <i class="bi bi-trash3-fill"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    <!-- Empty State -->
+                    <tr *ngIf="products.length === 0">
+                        <td colspan="5" class="text-center py-5">
+                            <div class="empty-inventory">
+                                <i class="bi bi-inbox text-muted display-4"></i>
+                                <h5 class="mt-3">No products found</h5>
+                                <p class="text-muted">Start by adding your first performance supplement.</p>
+                                <a routerLink="/admin/products/add" class="btn btn-primary mt-2">Add Product</a>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

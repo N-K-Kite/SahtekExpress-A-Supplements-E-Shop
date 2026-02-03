@@ -1,0 +1,68 @@
+.glass-card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border-radius: 16px;
+}
+
+.profile-avatar-large {
+    font-size: 3rem;
+    line-height: 1;
+}
+
+.btn-tab {
+    background: transparent;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    color: #6c757d;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border-bottom: 3px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.btn-tab:hover {
+    color: #212529;
+    background: rgba(0, 0, 0, 0.02);
+}
+
+.btn-tab.active {
+    color: var(--primary-color, #0d6efd);
+    border-bottom-color: var(--primary-color, #0d6efd);
+}
+
+.form-floating>.form-control:focus~label,
+.form-floating>.form-control:not(:placeholder-shown)~label {
+    color: var(--primary-color, #0d6efd);
+}
+
+.form-control:focus {
+    border-color: var(--primary-color, #0d6efd);
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+.alert-warning-modern {
+    background: rgba(255, 193, 7, 0.1);
+    border: 1px solid rgba(255, 193, 7, 0.2);
+    color: #856404;
+    border-radius: 8px;
+    padding: 1rem;
+    font-size: 0.9rem;
+}
+
+.fade-in {
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

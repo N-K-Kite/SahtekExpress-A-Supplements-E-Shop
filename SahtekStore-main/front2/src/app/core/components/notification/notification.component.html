@@ -1,0 +1,12 @@
+<div class="notification-container">
+    <div *ngFor="let note of notifications$ | async" class="notification-toast" [ngClass]="note.type" role="alert">
+        <div class="notification-content">
+            <i class="bi" [ngClass]="{
+                'bi-check-circle-fill': note.type === 'success',
+                'bi-exclamation-triangle-fill': note.type === 'error',
+                'bi-info-circle-fill': note.type === 'info'
+            }"></i>
+            <span>{{ note.message }}</span>
+        </div>
+    </div>
+</div>

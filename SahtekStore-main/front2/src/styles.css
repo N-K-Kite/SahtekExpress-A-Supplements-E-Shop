@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+    /* Performance Palette */
+    --primary-color: #0062ff;
+    --primary-gradient: linear-gradient(135deg, #0062ff 0%, #00d2ff 100%);
+    --dark-bg: #0f172a;
+    --surface-bg: #1e293b;
+    --accent-color: #bef264;
+    /* Neon Lime */
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --glass-bg: rgba(30, 41, 59, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.1);
+
+    /* Legacy compatibility / Transitions */
+    --font-main: 'Outfit', sans-serif;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: #f8fafc;
+    /* Light by default, but we'll use dark sections */
+    color: #1a202c;
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Global Link Resets */
+a {
+    text-decoration: none !important;
+    color: inherit;
+}
+
+/* Custom Badge Resets (prevents underline inheritance) */
+.badge {
+    text-decoration: none !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 800;
+    letter-spacing: -0.02em;
+}
+
+.btn-premium {
+    background: var(--primary-gradient);
+    color: white;
+    font-weight: 700;
+    padding: 12px 28px;
+    border-radius: 12px;
+    border: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 20px rgba(0, 98, 255, 0.2);
+}
+
+.btn-premium:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 30px rgba(0, 98, 255, 0.3);
+}

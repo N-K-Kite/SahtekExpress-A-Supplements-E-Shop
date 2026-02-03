@@ -1,0 +1,150 @@
+<div class="analytics-wrapper">
+    <div class="header-section mb-4">
+        <h2 class="dashboard-title">Tableau de Bord Analytique</h2>
+        <p class="text-muted">Aperçu en temps réel de vos performances de vente</p>
+    </div>
+
+    <!-- Loading State -->
+    <div *ngIf="loading" class="loading-overlay">
+        <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Chargement...</span>
+        </div>
+    </div>
+
+    <div *ngIf="!loading">
+        <!-- Stats Grid -->
+        <div class="row g-4 mb-5">
+            <div class="col-md-3">
+                <div class="stat-card revenue">
+                    <div class="stat-icon"><i class="bi bi-wallet2"></i></div>
+                    <div class="stat-info">
+                        <span class="stat-label">Revenu Total</span>
+                        <h3 class="stat-value">{{ totalRevenue | number:'1.2-2' }} <small>TND</small></h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="stat-card orders">
+                    <div class="stat-icon"><i class="bi bi-cart-check"></i></div>
+                    <div class="stat-info">
+                        <span class="stat-label">Commandes</span>
+                        <h3 class="stat-value">{{ totalOrders }}</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="stat-card products">
+                    <div class="stat-icon"><i class="bi bi-box-seam"></i></div>
+                    <div class="stat-info">
+                        <span class="stat-label">Produits</span>
+                        <h3 class="stat-value">{{ totalProducts }}</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="stat-card average">
+                    <div class="stat-icon"><i class="bi bi-graph-up-arrow"></i></div>
+                    <div class="stat-info">
+                        <span class="stat-label">Panier Moyen</span>
+                        <h3 class="stat-value">{{ averageOrderValue | number:'1.2-2' }} <small>TND</small></h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Charts Row -->
+        <div class="row g-4 mb-5">
+            <div class="col-12">
+                <div class="data-card chart-container">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h5 class="card-title">Évolution des Ventes (7 derniers jours)</h5>
+                        <div class="chart-legend">
+                            <span class="dot primary"></span> Revenu (TND)
+                        </div>
+                    </div>
+                    <div class="chart-wrapper">
+                        <canvas id="salesChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-4">
+            <!-- Order status distribution -->
+            <div class="col-lg-4">
+                <div class="data-card">
+                    <h5 class="card-title">Statut des Commandes</h5>
+                    <div class="status-list mt-4">
+                        <div class="status-item" *ngFor="let item of statusDistribution | keyvalue">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="status-name">{{ item.key }}</span>
+                                <span class="badge" [ngClass]="getStatusColor(item.key.toString())">{{ item.value
+                                    }}</span>
+                            </div>
+                            <div class="progress" style="height: 6px;">
+                                <div class="progress-bar" [ngClass]="getStatusColor(item.key.toString())"
+                                    [style.width.%]="(item.value / totalOrders) * 100"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Activity -->
+            <div class="col-lg-8">
+                <div class="data-card">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h5 class="card-title">Dernières Commandes</h5>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-hover align-middle">
+                            <thead>
+                                <tr>
+                                    <th>Client</th>
+                                    <th>Date</th>
+                                    <th>Montant</th>
+                                    <th>Statut</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let order of recentOrders">
+                                    <td>
+                                        <div class="client-name">{{ order.firstName }} {{ order.lastName }}</div>
+                                        <small class="text-muted">{{ order.email }}</small>
+                                    </td>
+                                    <td>{{ order.created_at | date:'shortDate' }}</td>
+                                    <td class="fw-bold">{{ order.totalAmount }} TND</td>
+                                    <td>
+                                        <span class="badge rounded-pill" [ngClass]="getStatusColor(order.status)">
+                                            {{ order.status }}
+                                        </span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Low Stock Alert -->
+            <div class="col-12">
+                <div class="alert-card low-stock">
+                    <div class="d-flex align-items-center gap-3 mb-4">
+                        <div class="alert-icon"><i class="bi bi-exclamation-triangle-fill"></i></div>
+                        <h5 class="card-title m-0">Alertes Stock Faible</h5>
+                    </div>
+                    <div class="row g-3">
+                        <div class="col-md-4" *ngFor="let prod of lowStockProducts">
+                            <div class="stock-item-pill">
+                                <span class="prod-name">{{ prod.name }}</span>
+                                <span class="stock-qty" [class.very-low]="(prod.stockQuantity || 0) <= 2">
+                                    {{ prod.stockQuantity ?? prod.stock ?? 0 }} restants
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
